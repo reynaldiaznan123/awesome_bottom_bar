@@ -130,11 +130,41 @@ class _BottomBarCreativeState extends State<BottomBarCreative> {
                           Padding(
                             padding: pad,
                             child: highlightWidget,
-                          )
+                          ),
                         ],
                       );
+                      if (widget.builder != null) {
+                        return Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            widget.builder!(
+                              Padding(
+                                padding: pad,
+                                child: highlightWidget,
+                              ),
+                              index,
+                            ),
+                          ],
+                        );
+                      }
                     } else {
-                      child = Stack(
+                      if (widget.builder != null) {
+                        Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            SizedBox(width: sizeHighlight),
+                            widget.builder!(
+                              Positioned(
+                                top: -sizeHighlight / 2,
+                                child: highlightWidget,
+                              ),
+                              index,
+                            ),
+                          ],
+                        );
+                      }
+
+                      return Stack(
                         clipBehavior: Clip.none,
                         children: [
                           SizedBox(width: sizeHighlight),
