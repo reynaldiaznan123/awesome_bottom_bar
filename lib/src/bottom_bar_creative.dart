@@ -6,6 +6,8 @@ import '../widgets/build_icon.dart';
 import '../widgets/hexagon/hexagon.dart';
 import 'bottom_bar.dart';
 
+typedef Bottom = void Function();
+
 class BottomBarCreative extends StatefulWidget {
   final List<TabItem> items;
 
@@ -36,6 +38,8 @@ class BottomBarCreative extends StatefulWidget {
   final double? pad;
   final bool? enableShadow;
 
+  final Widget Function(Widget child, int index)? builder;
+
   const BottomBarCreative({
     Key? key,
     required this.items,
@@ -59,6 +63,7 @@ class BottomBarCreative extends StatefulWidget {
     this.bottom = 12,
     this.pad = 4,
     this.enableShadow = true,
+    this.builder,
   }) : super(
           key: key,
         );
@@ -100,33 +105,7 @@ class _BottomBarCreativeState extends State<BottomBarCreative> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: List.generate(widget.items.length, (index) {
                   TabItem item = widget.items[index];
-                  if (visit == index) {
-                    Widget highlightWidget = GestureDetector(
-                      onTap: index != widget.indexSelected ? () => widget.onTap?.call(visit) : null,
-                      child: buildHighLight(context, item: item, color: widget.colorSelected, size: sizeHighlight),
-                    );
-                    return !widget.isFloating
-                        ? Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              Padding(
-                                padding: pad,
-                                child: highlightWidget,
-                              )
-                            ],
-                          )
-                        : Stack(
-                            clipBehavior: Clip.none,
-                            children: [
-                              SizedBox(width: sizeHighlight),
-                              Positioned(
-                                top: -sizeHighlight / 2,
-                                child: highlightWidget,
-                              )
-                            ],
-                          );
-                  }
-                  return Expanded(
+                  Widget child = Expanded(
                     child: InkWell(
                       onTap: index != widget.indexSelected ? () => widget.onTap?.call(index) : null,
                       child: widget.items.length > index
@@ -139,6 +118,40 @@ class _BottomBarCreativeState extends State<BottomBarCreative> {
                           : null,
                     ),
                   );
+                  if (visit == index) {
+                    Widget highlightWidget = GestureDetector(
+                      onTap: index != widget.indexSelected ? () => widget.onTap?.call(visit) : null,
+                      child: buildHighLight(context, item: item, color: widget.colorSelected, size: sizeHighlight),
+                    );
+                    if (!widget.isFloating) {
+                      child = Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Padding(
+                            padding: pad,
+                            child: highlightWidget,
+                          )
+                        ],
+                      );
+                    } else {
+                      child = Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          SizedBox(width: sizeHighlight),
+                          Positioned(
+                            top: -sizeHighlight / 2,
+                            child: highlightWidget,
+                          )
+                        ],
+                      );
+                    }
+                  }
+
+                  if (widget.builder != null) {
+                    return widget.builder!(child, index);
+                  }
+
+                  return child;
                 }),
               ),
             )
