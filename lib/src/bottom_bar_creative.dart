@@ -124,15 +124,6 @@ class _BottomBarCreativeState extends State<BottomBarCreative> {
                       child: buildHighLight(context, item: item, color: widget.colorSelected, size: sizeHighlight),
                     );
                     if (!widget.isFloating) {
-                      child = Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Padding(
-                            padding: pad,
-                            child: highlightWidget,
-                          ),
-                        ],
-                      );
                       if (widget.builder != null) {
                         return Stack(
                           alignment: Alignment.center,
@@ -147,9 +138,19 @@ class _BottomBarCreativeState extends State<BottomBarCreative> {
                           ],
                         );
                       }
+
+                      return Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Padding(
+                            padding: pad,
+                            child: highlightWidget,
+                          ),
+                        ],
+                      );
                     } else {
                       if (widget.builder != null) {
-                        Stack(
+                        return Stack(
                           clipBehavior: Clip.none,
                           children: [
                             SizedBox(width: sizeHighlight),
