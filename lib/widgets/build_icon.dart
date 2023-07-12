@@ -26,7 +26,7 @@ class BuildIcon extends StatelessWidget {
       List<Color> colors = [iconColor, iconColor];
 
       Widget child;
-      if (item.iconActive != null) {
+      if (item.iconActive != null && selected) {
         child = item.iconActive;
       } else {
         child = ShaderMask(
