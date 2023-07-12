@@ -25,16 +25,23 @@ class BuildIcon extends StatelessWidget {
     if (item.icon is Widget) {
       List<Color> colors = [iconColor, iconColor];
 
-      return SizedBox(
-        width: iconSize,
-        height: iconSize,
-        child: ShaderMask(
+      Widget child;
+      if (item.iconActive != null) {
+        child = item.iconActive;
+      } else {
+        child = ShaderMask(
           shaderCallback: (Rect bounds) {
             return LinearGradient(colors: colors).createShader(bounds);
           },
           blendMode: BlendMode.srcIn,
-          child: selected ? item.iconActive ?? item.icon : item.icon as Widget,
-        ),
+          child: item.icon as Widget,
+        );
+      }
+
+      return SizedBox(
+        width: iconSize,
+        height: iconSize,
+        child: child,
       );
     }
 
