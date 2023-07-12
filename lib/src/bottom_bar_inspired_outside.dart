@@ -132,7 +132,7 @@ class _BottomBarInspiredOutsideState extends State<BottomBarInspiredOutside> {
     return Container(
       padding: EdgeInsets.only(bottom: widget.padbottom!, top: widget.padTop!),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           BuildIcon(

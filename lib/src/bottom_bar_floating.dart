@@ -76,11 +76,8 @@ class _BottomBarFloatingState extends State<BottomBarFloating> with TickerProvid
     _animationList = List<Animation<double>>.empty(growable: true);
 
     for (int i = 0; i < widget.items.length; ++i) {
-      _animationControllerList
-          .add(AnimationController(duration: widget.duration ?? const Duration(milliseconds: 400), vsync: this));
-      _animationList.add(Tween(begin: 1.0, end: 1.18)
-          .chain(CurveTween(curve: widget.curve ?? Curves.ease))
-          .animate(_animationControllerList[i]));
+      _animationControllerList.add(AnimationController(duration: widget.duration ?? const Duration(milliseconds: 400), vsync: this));
+      _animationList.add(Tween(begin: 1.0, end: 1.18).chain(CurveTween(curve: widget.curve ?? Curves.ease)).animate(_animationControllerList[i]));
     }
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -124,10 +121,9 @@ class _BottomBarFloatingState extends State<BottomBarFloating> with TickerProvid
   ) {
     return Container(
       width: double.infinity,
-      padding:
-          widget.paddingVertical != null ? EdgeInsets.symmetric(vertical: widget.paddingVertical ?? 17.0) : padDefault,
+      padding: widget.paddingVertical != null ? EdgeInsets.symmetric(vertical: widget.paddingVertical ?? 17.0) : padDefault,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           BuildIcon(
@@ -156,11 +152,8 @@ class _BottomBarFloatingState extends State<BottomBarFloating> with TickerProvid
       _animationList = List<Animation<double>>.empty(growable: true);
 
       for (int i = 0; i < widget.items.length; ++i) {
-        _animationControllerList
-            .add(AnimationController(duration: widget.duration ?? const Duration(milliseconds: 400), vsync: this));
-        _animationList.add(Tween(begin: 1.0, end: 1.18)
-            .chain(CurveTween(curve: widget.curve ?? Curves.ease))
-            .animate(_animationControllerList[i]));
+        _animationControllerList.add(AnimationController(duration: widget.duration ?? const Duration(milliseconds: 400), vsync: this));
+        _animationList.add(Tween(begin: 1.0, end: 1.18).chain(CurveTween(curve: widget.curve ?? Curves.ease)).animate(_animationControllerList[i]));
       }
     }
 
@@ -185,6 +178,7 @@ class _BottomBarFloatingState extends State<BottomBarFloating> with TickerProvid
       child: widget.items.isNotEmpty
           ? IntrinsicHeight(
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: List.generate(widget.items.length, (index) {
                   return Expanded(

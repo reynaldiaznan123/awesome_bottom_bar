@@ -14,7 +14,6 @@
  *  limitations under the License.
  */
 
-
 import '../../chip_style.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
@@ -111,8 +110,7 @@ class _InspiredState extends State<Inspired> with TickerProviderStateMixin {
     _updateAnimation(
       from: from ?? _currentIndex,
       to: index,
-      duration:
-          widget.animated == true ? const Duration(milliseconds: _transitionDuration) : const Duration(microseconds: 0),
+      duration: widget.animated == true ? const Duration(milliseconds: _transitionDuration) : const Duration(microseconds: 0),
     );
     // ignore: unawaited_futures
     _animationController?.forward();
@@ -233,12 +231,8 @@ class _InspiredState extends State<Inspired> with TickerProviderStateMixin {
               drawHexagon: drawHexagon,
               notchSmoothness: notchSmoothness,
               convexBridge: convexBridge,
-              leftCornerRadius: widget.fixed && widget.fixedIndex == 0
-                  ? 0
-                  : (widget.initialActive == 0 && !widget.fixed ? 0 : widget.radius!),
-              rightCornerRadius: widget.fixed && widget.fixedIndex == widget.count - 1
-                  ? 0
-                  : (widget.initialActive == widget.count - 1 && !widget.fixed ? 0 : widget.radius!),
+              leftCornerRadius: widget.fixed && widget.fixedIndex == 0 ? 0 : (widget.initialActive == 0 && !widget.fixed ? 0 : widget.radius!),
+              rightCornerRadius: widget.fixed && widget.fixedIndex == widget.count - 1 ? 0 : (widget.initialActive == widget.count - 1 && !widget.fixed ? 0 : widget.radius!),
             ),
           ),
         ),
@@ -279,7 +273,6 @@ class _InspiredState extends State<Inspired> with TickerProviderStateMixin {
       height: height,
       padding: EdgeInsets.only(bottom: paddingBottom),
       child: Row(
-        mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: children,
       ),

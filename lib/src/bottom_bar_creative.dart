@@ -211,7 +211,7 @@ class _BottomBarCreativeState extends State<BottomBarCreative> {
     return Container(
       padding: paddingVer != null ? EdgeInsets.symmetric(vertical: paddingVer) : padDefault,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           BuildIcon(

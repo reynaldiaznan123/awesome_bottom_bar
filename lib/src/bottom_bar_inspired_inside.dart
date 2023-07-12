@@ -123,7 +123,7 @@ class _BottomBarInspiredInsideState extends State<BottomBarInspiredInside> {
     return Container(
       padding: EdgeInsets.only(bottom: widget.padbottom!, top: widget.padTop!),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           BuildIcon(
