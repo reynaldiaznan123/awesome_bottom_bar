@@ -16,6 +16,7 @@ import 'debug/debug.dart';
 const List<TabItem> items = [
   TabItem(
     icon: Icons.home,
+    iconActive: Icons.home_outlined,
     title: 'Home',
   ),
   TabItem(
@@ -364,109 +365,109 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.symmetric(vertical: 20),
         child: Column(
           children: [
-            SizedBox(height: height),
-            BottomBarInspiredOutside(
-              items: items,
-              backgroundColor: bgColor,
-              color: color2,
-              colorSelected: Colors.white,
-              indexSelected: visit,
-              onTap: (int index) => setState(() {
-                visit = index;
-              }),
-              top: -42,
-              height: 52.0,
-              animated: true,
-              itemStyle: ItemStyle.hexagon,
-              chipStyle: const ChipStyle(drawHexagon: true),
-            ),
-            SizedBox(height: height),
-            BottomBarInspiredOutside(
-              items: items,
-              backgroundColor: bgColor,
-              color: color2,
-              colorSelected: Colors.white,
-              indexSelected: visit,
-              onTap: (int index) => setState(() {
-                visit = index;
-              }),
-              top: -28,
-              animated: false,
-              itemStyle: ItemStyle.circle,
-              chipStyle: const ChipStyle(notchSmoothness: NotchSmoothness.sharpEdge),
-            ),
-            SizedBox(height: height),
-            BottomBarInspiredOutside(
-              items: items,
-              backgroundColor: bgColor,
-              color: color2,
-              colorSelected: Colors.white,
-              indexSelected: visit,
-              onTap: (int index) => setState(() {
-                visit = index;
-              }),
-              top: -28,
-              animated: false,
-              itemStyle: ItemStyle.circle,
-              chipStyle: const ChipStyle(notchSmoothness: NotchSmoothness.smoothEdge),
-            ),
-            SizedBox(height: height),
-            BottomBarInspiredOutside(
-              items: items,
-              backgroundColor: bgColor,
-              color: color2,
-              colorSelected: Colors.white,
-              indexSelected: visit,
-              onTap: (int index) => setState(() {
-                visit = index;
-              }),
-              top: -28,
-              animated: false,
-              itemStyle: ItemStyle.circle,
-              chipStyle: const ChipStyle(notchSmoothness: NotchSmoothness.verySmoothEdge),
-            ),
-            SizedBox(height: height),
-            BottomBarInspiredOutside(
-              items: items,
-              backgroundColor: bgColor,
-              color: color2,
-              colorSelected: Colors.white,
-              indexSelected: visit,
-              onTap: (int index) => setState(() {
-                visit = index;
-              }),
-              top: -28,
-              animated: false,
-              itemStyle: ItemStyle.circle,
-            ),
-            SizedBox(height: height),
-            BottomBarInspiredInside(
-              items: items,
-              backgroundColor: bgColor,
-              color: color2,
-              colorSelected: Colors.white,
-              indexSelected: visit,
-              onTap: (int index) => setState(() {
-                visit = index;
-              }),
-              chipStyle: const ChipStyle(convexBridge: true),
-              itemStyle: ItemStyle.circle,
-              animated: false,
-            ),
-            SizedBox(height: height),
-            BottomBarInspiredInside(
-              items: items,
-              backgroundColor: bgColor,
-              color: color2,
-              colorSelected: Colors.white,
-              indexSelected: visit,
-              onTap: (int index) => setState(() {
-                visit = index;
-              }),
-              animated: false,
-              chipStyle: const ChipStyle(isHexagon: true, convexBridge: true),
-              itemStyle: ItemStyle.hexagon,
-            ),
+            // SizedBox(height: height),
+            // BottomBarInspiredOutside(
+            //   items: items,
+            //   backgroundColor: bgColor,
+            //   color: color2,
+            //   colorSelected: Colors.white,
+            //   indexSelected: visit,
+            //   onTap: (int index) => setState(() {
+            //     visit = index;
+            //   }),
+            //   top: -42,
+            //   height: 52.0,
+            //   animated: true,
+            //   itemStyle: ItemStyle.hexagon,
+            //   chipStyle: const ChipStyle(drawHexagon: true),
+            // ),
+            // SizedBox(height: height),
+            // BottomBarInspiredOutside(
+            //   items: items,
+            //   backgroundColor: bgColor,
+            //   color: color2,
+            //   colorSelected: Colors.white,
+            //   indexSelected: visit,
+            //   onTap: (int index) => setState(() {
+            //     visit = index;
+            //   }),
+            //   top: -28,
+            //   animated: false,
+            //   itemStyle: ItemStyle.circle,
+            //   chipStyle: const ChipStyle(notchSmoothness: NotchSmoothness.sharpEdge),
+            // ),
+            // SizedBox(height: height),
+            // BottomBarInspiredOutside(
+            //   items: items,
+            //   backgroundColor: bgColor,
+            //   color: color2,
+            //   colorSelected: Colors.white,
+            //   indexSelected: visit,
+            //   onTap: (int index) => setState(() {
+            //     visit = index;
+            //   }),
+            //   top: -28,
+            //   animated: false,
+            //   itemStyle: ItemStyle.circle,
+            //   chipStyle: const ChipStyle(notchSmoothness: NotchSmoothness.smoothEdge),
+            // ),
+            // SizedBox(height: height),
+            // BottomBarInspiredOutside(
+            //   items: items,
+            //   backgroundColor: bgColor,
+            //   color: color2,
+            //   colorSelected: Colors.white,
+            //   indexSelected: visit,
+            //   onTap: (int index) => setState(() {
+            //     visit = index;
+            //   }),
+            //   top: -28,
+            //   animated: false,
+            //   itemStyle: ItemStyle.circle,
+            //   chipStyle: const ChipStyle(notchSmoothness: NotchSmoothness.verySmoothEdge),
+            // ),
+            // SizedBox(height: height),
+            // BottomBarInspiredOutside(
+            //   items: items,
+            //   backgroundColor: bgColor,
+            //   color: color2,
+            //   colorSelected: Colors.white,
+            //   indexSelected: visit,
+            //   onTap: (int index) => setState(() {
+            //     visit = index;
+            //   }),
+            //   top: -28,
+            //   animated: false,
+            //   itemStyle: ItemStyle.circle,
+            // ),
+            // SizedBox(height: height),
+            // BottomBarInspiredInside(
+            //   items: items,
+            //   backgroundColor: bgColor,
+            //   color: color2,
+            //   colorSelected: Colors.white,
+            //   indexSelected: visit,
+            //   onTap: (int index) => setState(() {
+            //     visit = index;
+            //   }),
+            //   chipStyle: const ChipStyle(convexBridge: true),
+            //   itemStyle: ItemStyle.circle,
+            //   animated: false,
+            // ),
+            // SizedBox(height: height),
+            // BottomBarInspiredInside(
+            //   items: items,
+            //   backgroundColor: bgColor,
+            //   color: color2,
+            //   colorSelected: Colors.white,
+            //   indexSelected: visit,
+            //   onTap: (int index) => setState(() {
+            //     visit = index;
+            //   }),
+            //   animated: false,
+            //   chipStyle: const ChipStyle(isHexagon: true, convexBridge: true),
+            //   itemStyle: ItemStyle.hexagon,
+            // ),
             BottomBarFloating(
               items: items,
               backgroundColor: bgColor,

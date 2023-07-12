@@ -107,18 +107,19 @@ class _BottomBarDefaultState extends State<BottomBarDefault> with TickerProvider
         builder: (context, child) {
           return Transform.scale(
             scale: _animationList[index].value,
-            child: buildContentItem(item, itemColor, padDefault),
+            child: buildContentItem(item, itemColor, padDefault, isSelected),
           );
         },
       );
     }
-    return buildContentItem(item, itemColor, padDefault);
+    return buildContentItem(item, itemColor, padDefault, isSelected);
   }
 
   Widget buildContentItem(
     TabItem item,
     Color itemColor,
     EdgeInsets padDefault,
+    bool isSelected,
   ) {
     return Container(
       width: double.infinity,
@@ -132,6 +133,7 @@ class _BottomBarDefaultState extends State<BottomBarDefault> with TickerProvider
             iconColor: itemColor,
             iconSize: widget.iconSize,
             countStyle: widget.countStyle,
+            selected: isSelected,
           ),
           if (item.title is String && item.title != '') ...[
             SizedBox(height: widget.pad),

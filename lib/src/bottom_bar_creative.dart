@@ -219,6 +219,7 @@ class _BottomBarCreativeState extends State<BottomBarCreative> {
             iconColor: itemColor,
             iconSize: widget.iconSize,
             countStyle: countStyle,
+            selected: isSelected,
           ),
           if (item.title is String && item.title != '') ...[
             SizedBox(height: widget.pad),

@@ -8,6 +8,7 @@ class BuildIcon extends StatelessWidget {
   final double iconSize;
   final Color iconColor;
   final CountStyle? countStyle;
+  final bool selected;
 
   const BuildIcon({
     Key? key,
@@ -15,6 +16,7 @@ class BuildIcon extends StatelessWidget {
     required this.iconColor,
     this.iconSize = 22,
     this.countStyle,
+    this.selected = false,
   }) : super(key: key);
 
   @override
@@ -31,13 +33,13 @@ class BuildIcon extends StatelessWidget {
             return LinearGradient(colors: colors).createShader(bounds);
           },
           blendMode: BlendMode.srcIn,
-          child: item.icon as Widget,
+          child: selected ? item.iconActive ?? item.icon : item.icon as Widget,
         ),
       );
     }
 
     Widget icon = Icon(
-      item.icon,
+      selected ? item.iconActive ?? item.icon : item.icon,
       size: iconSize,
       color: iconColor,
     );

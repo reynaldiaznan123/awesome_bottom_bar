@@ -168,6 +168,7 @@ class _BottomBarSalomonState extends State<BottomBarSalomon> with TickerProvider
                     iconColor: itemColor,
                     iconSize: widget.iconSize,
                     countStyle: countStyle,
+                    selected: isSelected,
                   ),
                 ),
               ),
@@ -178,6 +179,7 @@ class _BottomBarSalomonState extends State<BottomBarSalomon> with TickerProvider
                 iconColor: itemColor,
                 iconSize: widget.iconSize,
                 countStyle: countStyle,
+                selected: isSelected,
               ),
             ],
             if (item.title is String && item.title != '') ...[

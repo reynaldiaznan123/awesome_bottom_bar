@@ -106,18 +106,19 @@ class _BottomBarFloatingState extends State<BottomBarFloating> with TickerProvid
         builder: (context, child) {
           return Transform.scale(
             scale: _animationList[index].value,
-            child: buildContentItem(item, itemColor, padDefault),
+            child: buildContentItem(item, itemColor, padDefault, isSelected),
           );
         },
       );
     }
-    return buildContentItem(item, itemColor, padDefault);
+    return buildContentItem(item, itemColor, padDefault, isSelected);
   }
 
   Widget buildContentItem(
     TabItem item,
     Color itemColor,
     EdgeInsets padDefault,
+    bool selected,
   ) {
     return Container(
       width: double.infinity,
@@ -131,6 +132,7 @@ class _BottomBarFloatingState extends State<BottomBarFloating> with TickerProvid
             iconColor: itemColor,
             iconSize: widget.iconSize,
             countStyle: widget.countStyle,
+            selected: selected,
           ),
           if (item.title is String && item.title != '') ...[
             SizedBox(height: widget.pad),

@@ -76,11 +76,8 @@ class _BottomBarBackgroundState extends State<BottomBarBackground> with TickerPr
     _animationList = List<Animation<Color?>>.empty(growable: true);
 
     for (int i = 0; i < widget.items.length; ++i) {
-      _animationControllerList
-          .add(AnimationController(duration: widget.duration ?? const Duration(milliseconds: 400), vsync: this));
-      _animationList.add(ColorTween(begin: widget.color, end: widget.colorSelected)
-          .chain(CurveTween(curve: widget.curve ?? Curves.ease))
-          .animate(_animationControllerList[i]));
+      _animationControllerList.add(AnimationController(duration: widget.duration ?? const Duration(milliseconds: 400), vsync: this));
+      _animationList.add(ColorTween(begin: widget.color, end: widget.colorSelected).chain(CurveTween(curve: widget.curve ?? Curves.ease)).animate(_animationControllerList[i]));
     }
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -101,15 +98,15 @@ class _BottomBarBackgroundState extends State<BottomBarBackground> with TickerPr
       return AnimatedBuilder(
         animation: _animationList[index],
         builder: (context, child) {
-          return buildContentItem(item, _animationList[index].value ?? Colors.black);
+          return buildContentItem(item, _animationList[index].value ?? Colors.black, isSelected);
         },
       );
     }
     Color itemColor = isSelected ? widget.colorSelected : widget.color;
-    return buildContentItem(item, itemColor);
+    return buildContentItem(item, itemColor, isSelected);
   }
 
-  Widget buildContentItem(TabItem item, Color color) {
+  Widget buildContentItem(TabItem item, Color color, bool selected) {
     double bottom = MediaQuery.of(context).viewPadding.bottom;
     EdgeInsets padDefault = EdgeInsets.only(
       top: widget.top!,
@@ -127,6 +124,7 @@ class _BottomBarBackgroundState extends State<BottomBarBackground> with TickerPr
             iconColor: color,
             iconSize: widget.iconSize,
             countStyle: widget.countStyle,
+            selected: selected,
           ),
           if (item.title is String && item.title != '') ...[
             SizedBox(height: widget.pad),
@@ -166,11 +164,8 @@ class _BottomBarBackgroundState extends State<BottomBarBackground> with TickerPr
       _animationList = List<Animation<Color?>>.empty(growable: true);
 
       for (int i = 0; i < widget.items.length; ++i) {
-        _animationControllerList
-            .add(AnimationController(duration: widget.duration ?? const Duration(milliseconds: 400), vsync: this));
-        _animationList.add(ColorTween(begin: widget.color, end: widget.colorSelected)
-            .chain(CurveTween(curve: widget.curve ?? Curves.ease))
-            .animate(_animationControllerList[i]));
+        _animationControllerList.add(AnimationController(duration: widget.duration ?? const Duration(milliseconds: 400), vsync: this));
+        _animationList.add(ColorTween(begin: widget.color, end: widget.colorSelected).chain(CurveTween(curve: widget.curve ?? Curves.ease)).animate(_animationControllerList[i]));
       }
     }
 

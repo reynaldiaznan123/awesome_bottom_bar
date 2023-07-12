@@ -124,10 +124,10 @@ class _BottomBarInspiredOutsideState extends State<BottomBarInspiredOutside> {
           data: index,
           duration: widget.duration ?? const Duration(milliseconds: 350),
           curve: widget.curve ?? Curves.easeInOut,
-          child: buildContentItem(item, itemColor(), widget.iconSize, widget.sizeInside!),
+          child: buildContentItem(item, itemColor(), widget.iconSize, widget.sizeInside!, isSelected),
         );
       }
-      return buildContentItem(item, itemColor(), widget.iconSize, widget.sizeInside!);
+      return buildContentItem(item, itemColor(), widget.iconSize, widget.sizeInside!, isSelected);
     }
     return Container(
       padding: EdgeInsets.only(bottom: widget.padbottom!, top: widget.padTop!),
@@ -154,7 +154,7 @@ class _BottomBarInspiredOutsideState extends State<BottomBarInspiredOutside> {
     );
   }
 
-  Widget buildContentItem(TabItem item, Color itemColor, double iconSize, double sizeInside) {
+  Widget buildContentItem(TabItem item, Color itemColor, double iconSize, double sizeInside, bool selected) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -170,6 +170,7 @@ class _BottomBarInspiredOutsideState extends State<BottomBarInspiredOutside> {
               iconColor: widget.fixed ? widget.colorSelected : itemColor,
               iconSize: iconSize,
               countStyle: widget.countStyle,
+              selected: selected,
             ),
           ),
         if (widget.itemStyle == ItemStyle.hexagon)
@@ -183,6 +184,7 @@ class _BottomBarInspiredOutsideState extends State<BottomBarInspiredOutside> {
               iconColor: widget.fixed ? widget.colorSelected : itemColor,
               iconSize: iconSize,
               countStyle: widget.countStyle,
+              selected: selected,
             ),
           ),
       ],
