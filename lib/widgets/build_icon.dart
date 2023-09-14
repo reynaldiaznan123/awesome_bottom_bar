@@ -58,6 +58,8 @@ class BuildIcon extends StatelessWidget {
         // );
         child = item.icon;
       }
+
+      return child;
     }
 
     Widget icon = Icon(

@@ -13,27 +13,92 @@ import 'bottom_bar_inside.dart';
 import 'bottom_bar_outside.dart';
 import 'debug/debug.dart';
 
-const List<TabItem> items = [
+List<TabItem> items = [
+  // TabItem(
+  //   icon: Icons.home,
+  //   iconActive: Icons.home_outlined,
+  //   title: 'Home',
+  // ),
+  // TabItem(
+  //   icon: Icons.search_sharp,
+  //   title: 'Shop List Product',
+  // ),
+  // TabItem(
+  //   icon: Icons.favorite_border,
+  //   title: 'Wishlist',
+  // ),
+  // TabItem(
+  //   icon: Icons.shopping_cart_outlined,
+  //   title: 'Cart',
+  // ),
+  // TabItem(
+  //   icon: Icons.account_box,
+  //   title: 'Profile User',
+  // ),
+
   TabItem(
-    icon: Icons.home,
-    iconActive: Icons.home_outlined,
+    icon: Image.asset(
+      'images/home.png',
+      width: 32,
+      height: 32,
+    ),
+    iconActive: Image.asset(
+      'images/home_active.png',
+      width: 32,
+      height: 32,
+    ),
     title: 'Home',
   ),
   TabItem(
-    icon: Icons.search_sharp,
-    title: 'Shop List Product',
+    icon: Image.asset(
+      'images/masjid.png',
+      width: 32,
+      height: 32,
+    ),
+    iconActive: Image.asset(
+      'images/masjid_active.png',
+      width: 32,
+      height: 32,
+    ),
+    title: 'Lokasi Masjid',
   ),
   TabItem(
-    icon: Icons.favorite_border,
-    title: 'Wishlist',
+    icon: SizedBox(
+      height: 32.0,
+      width: 32.0,
+      child: Image.asset(
+        'images/donasi.png',
+        width: 80.0,
+        height: 8.0,
+      ),
+    ),
+    title: 'Donasi',
   ),
   TabItem(
-    icon: Icons.shopping_cart_outlined,
-    title: 'Cart',
+    icon: Image.asset(
+      'images/sholat.png',
+      width: 32,
+      height: 32,
+    ),
+    iconActive: Image.asset(
+      'images/sholat_active.png',
+      width: 32,
+      height: 32,
+    ),
+    title: 'Sholat',
   ),
   TabItem(
-    icon: Icons.account_box,
-    title: 'Profile User',
+    icon: Image.asset(
+      'images/lainnya.png',
+      width: 32,
+      height: 32,
+    ),
+    iconActive: Image.asset(
+      'images/lainnya_active.png',
+      width: 32,
+      height: 32,
+    ),
+    title: 'Lainnya',
   ),
 ];
 
@@ -96,7 +161,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const Inside(
+                  builder: (context) => Inside(
                     items: items,
                     chipStyle: ChipStyle(convexBridge: true),
                   ),
@@ -110,7 +175,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const Inside(
+                  builder: (context) => Inside(
                     items: items,
                     style: ItemStyle.hexagon,
                     chipStyle: ChipStyle(
@@ -129,7 +194,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const OutSide(
+                  builder: (context) => OutSide(
                     items: items,
                     chipStyle: ChipStyle(notchSmoothness: NotchSmoothness.sharpEdge),
                   ),
@@ -143,7 +208,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const OutSide(
+                  builder: (context) => OutSide(
                     items: items,
                     style: ItemStyle.circle,
                   ),
@@ -157,7 +222,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const OutSide(
+                  builder: (context) => OutSide(
                     items: items,
                     style: ItemStyle.circle,
                     chipStyle: ChipStyle(notchSmoothness: NotchSmoothness.verySmoothEdge),
@@ -172,7 +237,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const OutSide(
+                  builder: (context) => OutSide(
                     items: items,
                     style: ItemStyle.circle,
                     chipStyle: ChipStyle(notchSmoothness: NotchSmoothness.smoothEdge),
@@ -187,7 +252,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const OutSide(
+                  builder: (context) => OutSide(
                     items: items,
                     style: ItemStyle.circle,
                     chipStyle: ChipStyle(notchSmoothness: NotchSmoothness.softEdge),
@@ -202,7 +267,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const OutSide(
+                  builder: (context) => OutSide(
                     items: items,
                     top: -40,
                     style: ItemStyle.hexagon,
@@ -219,7 +284,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const Salomon(items: items),
+                  builder: (context) => Salomon(items: items),
                 ),
               );
             },
@@ -231,7 +296,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const DividerDemo(items: items),
+                  builder: (context) => DividerDemo(items: items),
                 ),
               );
             },
@@ -242,7 +307,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const DividerDemo(
+                  builder: (context) => DividerDemo(
                     items: items,
                     styleDivider: StyleDivider.bottom,
                   ),
@@ -257,7 +322,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const Fancy(items: items),
+                  builder: (context) => Fancy(items: items),
                 ),
               );
             },
@@ -268,7 +333,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const Fancy(
+                  builder: (context) => Fancy(
                     items: items,
                     style: StyleIconFooter.dot,
                   ),
@@ -283,7 +348,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const Default(items: items),
+                  builder: (context) => Default(items: items),
                 ),
               );
             },
@@ -294,7 +359,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const Background(items: items),
+                  builder: (context) => Background(items: items),
                 ),
               );
             },
@@ -306,7 +371,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const Floating(items: items),
+                  builder: (context) => Floating(items: items),
                 ),
               );
             },
@@ -318,7 +383,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const Creative(items: items),
+                  builder: (context) => Creative(items: items),
                 ),
               );
             },
@@ -329,9 +394,9 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const Creative(
+                  builder: (context) => Creative(
                     items: items,
-                    highlightStyle: HighlightStyle(
+                    highlightStyle: const HighlightStyle(
                       isHexagon: true,
                     ),
                   ),
@@ -345,10 +410,10 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const Creative(
+                  builder: (context) => Creative(
                     items: items,
                     isFloating: true,
-                    highlightStyle: HighlightStyle(
+                    highlightStyle: const HighlightStyle(
                       sizeLarge: true,
                       background: Colors.red,
                       elevation: 3,
