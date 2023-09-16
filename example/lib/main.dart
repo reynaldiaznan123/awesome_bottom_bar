@@ -143,6 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       backgroundColor: Colors.red,
+      extendBody: true,
       drawer: Drawer(
           child: ListView(
         padding: const EdgeInsets.only(left: 16),
@@ -427,288 +428,291 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(vertical: 20),
-        child: Column(
-          children: [
-            // SizedBox(height: height),
-            // BottomBarInspiredOutside(
-            //   items: items,
-            //   backgroundColor: bgColor,
-            //   color: color2,
-            //   colorSelected: Colors.white,
-            //   indexSelected: visit,
-            //   onTap: (int index) => setState(() {
-            //     visit = index;
-            //   }),
-            //   top: -42,
-            //   height: 52.0,
-            //   animated: true,
-            //   itemStyle: ItemStyle.hexagon,
-            //   chipStyle: const ChipStyle(drawHexagon: true),
-            // ),
-            // SizedBox(height: height),
-            // BottomBarInspiredOutside(
-            //   items: items,
-            //   backgroundColor: bgColor,
-            //   color: color2,
-            //   colorSelected: Colors.white,
-            //   indexSelected: visit,
-            //   onTap: (int index) => setState(() {
-            //     visit = index;
-            //   }),
-            //   top: -28,
-            //   animated: false,
-            //   itemStyle: ItemStyle.circle,
-            //   chipStyle: const ChipStyle(notchSmoothness: NotchSmoothness.sharpEdge),
-            // ),
-            // SizedBox(height: height),
-            // BottomBarInspiredOutside(
-            //   items: items,
-            //   backgroundColor: bgColor,
-            //   color: color2,
-            //   colorSelected: Colors.white,
-            //   indexSelected: visit,
-            //   onTap: (int index) => setState(() {
-            //     visit = index;
-            //   }),
-            //   top: -28,
-            //   animated: false,
-            //   itemStyle: ItemStyle.circle,
-            //   chipStyle: const ChipStyle(notchSmoothness: NotchSmoothness.smoothEdge),
-            // ),
-            // SizedBox(height: height),
-            // BottomBarInspiredOutside(
-            //   items: items,
-            //   backgroundColor: bgColor,
-            //   color: color2,
-            //   colorSelected: Colors.white,
-            //   indexSelected: visit,
-            //   onTap: (int index) => setState(() {
-            //     visit = index;
-            //   }),
-            //   top: -28,
-            //   animated: false,
-            //   itemStyle: ItemStyle.circle,
-            //   chipStyle: const ChipStyle(notchSmoothness: NotchSmoothness.verySmoothEdge),
-            // ),
-            // SizedBox(height: height),
-            // BottomBarInspiredOutside(
-            //   items: items,
-            //   backgroundColor: bgColor,
-            //   color: color2,
-            //   colorSelected: Colors.white,
-            //   indexSelected: visit,
-            //   onTap: (int index) => setState(() {
-            //     visit = index;
-            //   }),
-            //   top: -28,
-            //   animated: false,
-            //   itemStyle: ItemStyle.circle,
-            // ),
-            // SizedBox(height: height),
-            // BottomBarInspiredInside(
-            //   items: items,
-            //   backgroundColor: bgColor,
-            //   color: color2,
-            //   colorSelected: Colors.white,
-            //   indexSelected: visit,
-            //   onTap: (int index) => setState(() {
-            //     visit = index;
-            //   }),
-            //   chipStyle: const ChipStyle(convexBridge: true),
-            //   itemStyle: ItemStyle.circle,
-            //   animated: false,
-            // ),
-            // SizedBox(height: height),
-            // BottomBarInspiredInside(
-            //   items: items,
-            //   backgroundColor: bgColor,
-            //   color: color2,
-            //   colorSelected: Colors.white,
-            //   indexSelected: visit,
-            //   onTap: (int index) => setState(() {
-            //     visit = index;
-            //   }),
-            //   animated: false,
-            //   chipStyle: const ChipStyle(isHexagon: true, convexBridge: true),
-            //   itemStyle: ItemStyle.hexagon,
-            // ),
-            BottomBarFloating(
-              items: items,
-              backgroundColor: bgColor,
-              color: color2,
-              colorSelected: Colors.white,
-              indexSelected: visit,
-              onTap: (int index) => setState(() {
-                visit = index;
-              }),
-            ),
-            SizedBox(height: height),
-            BottomBarCreative(
-              items: items,
-              backgroundColor: Colors.green.withOpacity(0.21),
-              color: color,
-              colorSelected: colorSelect,
-              indexSelected: visit,
-              onTap: (int index) => setState(() {
-                visit = index;
-              }),
-            ),
-            SizedBox(height: height),
-            BottomBarCreative(
-              items: items,
-              backgroundColor: Colors.green.withOpacity(0.21),
-              color: color,
-              colorSelected: colorSelect,
-              indexSelected: visit,
-              highlightStyle: const HighlightStyle(
-                isHexagon: true,
+        child: Container(
+          color: Colors.blue,
+          child: Column(
+            children: [
+              // SizedBox(height: height),
+              // BottomBarInspiredOutside(
+              //   items: items,
+              //   backgroundColor: bgColor,
+              //   color: color2,
+              //   colorSelected: Colors.white,
+              //   indexSelected: visit,
+              //   onTap: (int index) => setState(() {
+              //     visit = index;
+              //   }),
+              //   top: -42,
+              //   height: 52.0,
+              //   animated: true,
+              //   itemStyle: ItemStyle.hexagon,
+              //   chipStyle: const ChipStyle(drawHexagon: true),
+              // ),
+              // SizedBox(height: height),
+              // BottomBarInspiredOutside(
+              //   items: items,
+              //   backgroundColor: bgColor,
+              //   color: color2,
+              //   colorSelected: Colors.white,
+              //   indexSelected: visit,
+              //   onTap: (int index) => setState(() {
+              //     visit = index;
+              //   }),
+              //   top: -28,
+              //   animated: false,
+              //   itemStyle: ItemStyle.circle,
+              //   chipStyle: const ChipStyle(notchSmoothness: NotchSmoothness.sharpEdge),
+              // ),
+              // SizedBox(height: height),
+              // BottomBarInspiredOutside(
+              //   items: items,
+              //   backgroundColor: bgColor,
+              //   color: color2,
+              //   colorSelected: Colors.white,
+              //   indexSelected: visit,
+              //   onTap: (int index) => setState(() {
+              //     visit = index;
+              //   }),
+              //   top: -28,
+              //   animated: false,
+              //   itemStyle: ItemStyle.circle,
+              //   chipStyle: const ChipStyle(notchSmoothness: NotchSmoothness.smoothEdge),
+              // ),
+              // SizedBox(height: height),
+              // BottomBarInspiredOutside(
+              //   items: items,
+              //   backgroundColor: bgColor,
+              //   color: color2,
+              //   colorSelected: Colors.white,
+              //   indexSelected: visit,
+              //   onTap: (int index) => setState(() {
+              //     visit = index;
+              //   }),
+              //   top: -28,
+              //   animated: false,
+              //   itemStyle: ItemStyle.circle,
+              //   chipStyle: const ChipStyle(notchSmoothness: NotchSmoothness.verySmoothEdge),
+              // ),
+              // SizedBox(height: height),
+              // BottomBarInspiredOutside(
+              //   items: items,
+              //   backgroundColor: bgColor,
+              //   color: color2,
+              //   colorSelected: Colors.white,
+              //   indexSelected: visit,
+              //   onTap: (int index) => setState(() {
+              //     visit = index;
+              //   }),
+              //   top: -28,
+              //   animated: false,
+              //   itemStyle: ItemStyle.circle,
+              // ),
+              // SizedBox(height: height),
+              // BottomBarInspiredInside(
+              //   items: items,
+              //   backgroundColor: bgColor,
+              //   color: color2,
+              //   colorSelected: Colors.white,
+              //   indexSelected: visit,
+              //   onTap: (int index) => setState(() {
+              //     visit = index;
+              //   }),
+              //   chipStyle: const ChipStyle(convexBridge: true),
+              //   itemStyle: ItemStyle.circle,
+              //   animated: false,
+              // ),
+              // SizedBox(height: height),
+              // BottomBarInspiredInside(
+              //   items: items,
+              //   backgroundColor: bgColor,
+              //   color: color2,
+              //   colorSelected: Colors.white,
+              //   indexSelected: visit,
+              //   onTap: (int index) => setState(() {
+              //     visit = index;
+              //   }),
+              //   animated: false,
+              //   chipStyle: const ChipStyle(isHexagon: true, convexBridge: true),
+              //   itemStyle: ItemStyle.hexagon,
+              // ),
+              BottomBarFloating(
+                items: items,
+                backgroundColor: bgColor,
+                color: color2,
+                colorSelected: Colors.white,
+                indexSelected: visit,
+                onTap: (int index) => setState(() {
+                  visit = index;
+                }),
               ),
-              onTap: (int index) => setState(() {
-                visit = index;
-              }),
-            ),
-            SizedBox(height: height),
-            BottomBarCreative(
-              items: items,
-              backgroundColor: Colors.green.withOpacity(0.21),
-              color: color,
-              colorSelected: colorSelect,
-              indexSelected: visit,
-              isFloating: true,
-              highlightStyle: const HighlightStyle(
-                background: Colors.transparent,
+              SizedBox(height: height),
+              BottomBarCreative(
+                items: items,
+                backgroundColor: Colors.green.withOpacity(0.21),
+                color: color,
+                colorSelected: colorSelect,
+                indexSelected: visit,
+                onTap: (int index) => setState(() {
+                  visit = index;
+                }),
               ),
-              onTap: (int index) => setState(() {
-                visit = index;
-              }),
-            ),
-            SizedBox(height: height),
-            BottomBarCreative(
-              items: items,
-              backgroundColor: Colors.green.withOpacity(0.21),
-              color: color,
-              colorSelected: colorSelect,
-              indexSelected: visit,
-              isFloating: true,
-              highlightStyle: const HighlightStyle(
-                sizeLarge: true, background: Colors.red, elevation: 3),
-              onTap: (int index) => setState(() {
-                visit = index;
-              }),
-            ),
-            SizedBox(height: height),
-            BottomBarCreative(
-              items: items,
-              backgroundColor: Colors.green.withOpacity(0.21),
-              color: color,
-              colorSelected: colorSelect,
-              indexSelected: visit,
-              isFloating: true,
-              highlightStyle: const HighlightStyle(sizeLarge: true, isHexagon: true, elevation: 2),
-              onTap: (int index) => setState(() {
-                visit = index;
-              }),
-            ),
-            SizedBox(height: height),
-            BottomBarInspiredFancy(
-              items: items,
-              backgroundColor: Colors.green.withOpacity(0.21),
-              color: color,
-              colorSelected: colorSelect,
-              indexSelected: visit,
-              onTap: (int index) => setState(() {
-                visit = index;
-              }),
-            ),
-            SizedBox(height: height),
-            BottomBarInspiredFancy(
-              items: items,
-              backgroundColor: Colors.green.withOpacity(0.21),
-              color: color,
-              colorSelected: colorSelect,
-              indexSelected: visit,
-              styleIconFooter: StyleIconFooter.dot,
-              onTap: (int index) => setState(() {
-                visit = index;
-              }),
-            ),
-            SizedBox(height: height),
-            BottomBarDefault(
-              items: items,
-              backgroundColor: Colors.green,
-              color: Colors.white,
-              colorSelected: Colors.orange,
-              onTap: (int index) => setState(() {
-                visit = index;
-              }),
-            ),
-            SizedBox(height: height),
-            BottomBarDefault(
-              items: items,
-              backgroundColor: Colors.green,
-              color: Colors.white,
-              colorSelected: Colors.orange,
-              onTap: (int index) => avoidPrint('$index'),
-              blur: 50,
-              countStyle: const CountStyle(
-                background: Colors.brown,
+              SizedBox(height: height),
+              BottomBarCreative(
+                items: items,
+                backgroundColor: Colors.green.withOpacity(0.21),
+                color: color,
+                colorSelected: colorSelect,
+                indexSelected: visit,
+                highlightStyle: const HighlightStyle(
+                  isHexagon: true,
+                ),
+                onTap: (int index) => setState(() {
+                  visit = index;
+                }),
               ),
-            ),
-            SizedBox(height: height),
-            BottomBarDefault(
-              items: items,
-              backgroundColor: Colors.green,
-              color: Colors.white,
-              colorSelected: Colors.orange,
-              iconSize: 40,
-              indexSelected: visit,
-              titleStyle: const TextStyle(fontSize: 18, color: Colors.black),
-              onTap: (int index) => setState(() {
-                visit = index;
-              }),
-            ),
-            SizedBox(height: height),
-            BottomBarDefault(
-              items: items,
-              backgroundColor: Colors.green,
-              color: Colors.white,
-              colorSelected: Colors.orange,
-              indexSelected: visit,
-              paddingVertical: 25,
-              onTap: (int index) => setState(() {
-                visit = index;
-              }),
-            ),
-            SizedBox(height: height),
-            BottomBarDivider(
-              items: items,
-              backgroundColor: Colors.amber,
-              color: Colors.grey,
-              colorSelected: Colors.blue,
-              indexSelected: visit,
-              onTap: (index) => setState(() {
-                visit = index;
-              }),
-              styleDivider: StyleDivider.bottom,
-              countStyle: const CountStyle(
-                background: Colors.white,
-                color: Colors.purple,
+              SizedBox(height: height),
+              BottomBarCreative(
+                items: items,
+                backgroundColor: Colors.green.withOpacity(0.21),
+                color: color,
+                colorSelected: colorSelect,
+                indexSelected: visit,
+                isFloating: true,
+                highlightStyle: const HighlightStyle(
+                  background: Colors.transparent,
+                ),
+                onTap: (int index) => setState(() {
+                  visit = index;
+                }),
               ),
-            ),
-            SizedBox(height: height),
-            BottomBarSalomon(
-              items: items,
-              color: Colors.blue,
-              backgroundColor: Colors.white,
-              colorSelected: Colors.white,
-              backgroundSelected: Colors.blue,
-              borderRadius: BorderRadius.circular(0),
-              indexSelected: visit,
-              onTap: (index) => setState(() {
-                visit = index;
-              }),
-            ),
-          ],
+              SizedBox(height: height),
+              BottomBarCreative(
+                items: items,
+                backgroundColor: Colors.green.withOpacity(0.21),
+                color: color,
+                colorSelected: colorSelect,
+                indexSelected: visit,
+                isFloating: true,
+                highlightStyle: const HighlightStyle(
+                  sizeLarge: true, background: Colors.red, elevation: 3),
+                onTap: (int index) => setState(() {
+                  visit = index;
+                }),
+              ),
+              SizedBox(height: height),
+              BottomBarCreative(
+                items: items,
+                backgroundColor: Colors.green.withOpacity(0.21),
+                color: color,
+                colorSelected: colorSelect,
+                indexSelected: visit,
+                isFloating: true,
+                highlightStyle: const HighlightStyle(sizeLarge: true, isHexagon: true, elevation: 2),
+                onTap: (int index) => setState(() {
+                  visit = index;
+                }),
+              ),
+              SizedBox(height: height),
+              BottomBarInspiredFancy(
+                items: items,
+                backgroundColor: Colors.green.withOpacity(0.21),
+                color: color,
+                colorSelected: colorSelect,
+                indexSelected: visit,
+                onTap: (int index) => setState(() {
+                  visit = index;
+                }),
+              ),
+              SizedBox(height: height),
+              BottomBarInspiredFancy(
+                items: items,
+                backgroundColor: Colors.green.withOpacity(0.21),
+                color: color,
+                colorSelected: colorSelect,
+                indexSelected: visit,
+                styleIconFooter: StyleIconFooter.dot,
+                onTap: (int index) => setState(() {
+                  visit = index;
+                }),
+              ),
+              SizedBox(height: height),
+              BottomBarDefault(
+                items: items,
+                backgroundColor: Colors.green,
+                color: Colors.white,
+                colorSelected: Colors.orange,
+                onTap: (int index) => setState(() {
+                  visit = index;
+                }),
+              ),
+              SizedBox(height: height),
+              BottomBarDefault(
+                items: items,
+                backgroundColor: Colors.green,
+                color: Colors.white,
+                colorSelected: Colors.orange,
+                onTap: (int index) => avoidPrint('$index'),
+                blur: 50,
+                countStyle: const CountStyle(
+                  background: Colors.brown,
+                ),
+              ),
+              SizedBox(height: height),
+              BottomBarDefault(
+                items: items,
+                backgroundColor: Colors.green,
+                color: Colors.white,
+                colorSelected: Colors.orange,
+                iconSize: 40,
+                indexSelected: visit,
+                titleStyle: const TextStyle(fontSize: 18, color: Colors.black),
+                onTap: (int index) => setState(() {
+                  visit = index;
+                }),
+              ),
+              SizedBox(height: height),
+              BottomBarDefault(
+                items: items,
+                backgroundColor: Colors.green,
+                color: Colors.white,
+                colorSelected: Colors.orange,
+                indexSelected: visit,
+                paddingVertical: 25,
+                onTap: (int index) => setState(() {
+                  visit = index;
+                }),
+              ),
+              SizedBox(height: height),
+              BottomBarDivider(
+                items: items,
+                backgroundColor: Colors.amber,
+                color: Colors.grey,
+                colorSelected: Colors.blue,
+                indexSelected: visit,
+                onTap: (index) => setState(() {
+                  visit = index;
+                }),
+                styleDivider: StyleDivider.bottom,
+                countStyle: const CountStyle(
+                  background: Colors.white,
+                  color: Colors.purple,
+                ),
+              ),
+              SizedBox(height: height),
+              BottomBarSalomon(
+                items: items,
+                color: Colors.blue,
+                backgroundColor: Colors.white,
+                colorSelected: Colors.white,
+                backgroundSelected: Colors.blue,
+                borderRadius: BorderRadius.circular(0),
+                indexSelected: visit,
+                onTap: (index) => setState(() {
+                  visit = index;
+                }),
+              ),
+            ],
+          ),
         ),
       ),
       // bottomNavigationBar: Container(

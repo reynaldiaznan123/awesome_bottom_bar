@@ -87,69 +87,75 @@ class _BottomBarCreativeState extends State<BottomBarCreative> {
 
     EdgeInsetsGeometry padTop = widget.isFloating ? EdgeInsets.only(top: sizeHighlight/2) : EdgeInsets.zero;
 
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        Positioned.fill(
-          child: Padding(
-            padding: padTop,
-            child: BuildLayout(
-              decoration: BoxDecoration(
-                color: widget.backgroundColor,
-                borderRadius: widget.borderRadius,
-                boxShadow: widget.boxShadow ?? shadow,
+    return Semantics(
+      explicitChildNodes: true,
+      child: Material(
+        type: MaterialType.transparency,
+        child: Stack(
+          clipBehavior: Clip.antiAlias,
+          children: [
+            Positioned.fill(
+              child: Padding(
+                padding: padTop,
+                child: BuildLayout(
+                  decoration: BoxDecoration(
+                    color: widget.backgroundColor,
+                    borderRadius: widget.borderRadius,
+                    boxShadow: widget.boxShadow ?? shadow,
+                  ),
+                ),
               ),
             ),
-          ),
+            if (widget.items.isNotEmpty)
+              IntrinsicHeight(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: List.generate(widget.items.length, (index) {
+                    TabItem item = widget.items[index];
+                    String value = widget.items[index].key ?? '';
+                    if (visit == index) {
+                      Widget highlightWidget = GestureDetector(
+                        key: Key(value),
+                        onTap: index != widget.indexSelected ? () => widget.onTap?.call(visit) : null,
+                        child: buildHighLight(context, item: item, color: widget.colorSelected, size: sizeHighlight),
+                      );
+                      return !widget.isFloating
+                          ? Container(
+                              padding: pad,
+                              alignment: Alignment.center,
+                              child: highlightWidget
+                            )
+                          : Column(
+                              children: [
+                                highlightWidget
+                              ],
+                            );
+                    }
+                    return Expanded(
+                      child: Padding(
+                        padding: padTop,
+                        child: InkWell(
+                          key: ValueKey(value),
+                          onTap: index != widget.indexSelected ? () => widget.onTap?.call(index) : null,
+                          child: widget.items.length > index
+                              ? buildItem(
+                            context,
+                            item: item,
+                            color: widget.color,
+                            isSelected: index == widget.indexSelected,
+                          )
+                              : null,
+                        ),
+                      ),
+                    );
+                  }),
+                ),
+              )
+            else Container(),
+          ],
         ),
-        if (widget.items.isNotEmpty)
-          IntrinsicHeight(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: List.generate(widget.items.length, (index) {
-                TabItem item = widget.items[index];
-                String value = widget.items[index].key ?? '';
-                if (visit == index) {
-                  Widget highlightWidget = GestureDetector(
-                    key: Key(value),
-                    onTap: index != widget.indexSelected ? () => widget.onTap?.call(visit) : null,
-                    child: buildHighLight(context, item: item, color: widget.colorSelected, size: sizeHighlight),
-                  );
-                  return !widget.isFloating
-                      ? Container(
-                          padding: pad,
-                          alignment: Alignment.center,
-                          child: highlightWidget
-                        )
-                      : Column(
-                          children: [
-                            highlightWidget
-                          ],
-                        );
-                }
-                return Expanded(
-                  child: Padding(
-                    padding: padTop,
-                    child: InkWell(
-                      key: ValueKey(value),
-                      onTap: index != widget.indexSelected ? () => widget.onTap?.call(index) : null,
-                      child: widget.items.length > index
-                          ? buildItem(
-                        context,
-                        item: item,
-                        color: widget.color,
-                        isSelected: index == widget.indexSelected,
-                      )
-                          : null,
-                    ),
-                  ),
-                );
-              }),
-            ),
-          )
-        else Container(),
-      ],
+      ),
     );
   }
 
