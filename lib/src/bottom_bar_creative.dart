@@ -6,8 +6,6 @@ import '../widgets/build_icon.dart';
 import '../widgets/hexagon/hexagon.dart';
 import 'bottom_bar.dart';
 
-typedef Bottom = void Function();
-
 class BottomBarCreative extends StatefulWidget {
   final List<TabItem> items;
 
@@ -38,8 +36,6 @@ class BottomBarCreative extends StatefulWidget {
   final double? pad;
   final bool? enableShadow;
 
-  final Widget Function(Widget child, int index)? builder;
-
   const BottomBarCreative({
     Key? key,
     required this.items,
@@ -63,7 +59,6 @@ class BottomBarCreative extends StatefulWidget {
     this.bottom = 12,
     this.pad = 4,
     this.enableShadow = true,
-    this.builder,
   }) : super(
           key: key,
         );
@@ -90,103 +85,70 @@ class _BottomBarCreativeState extends State<BottomBarCreative> {
 
     isShadow = widget.enableShadow!;
 
-    return BuildLayout(
-      decoration: BoxDecoration(
-        color: widget.backgroundColor,
-        borderRadius: widget.borderRadius,
-        boxShadow: widget.boxShadow ?? shadow,
-      ),
-      blur: widget.blur,
-      clipBehavior: Clip.none,
-      child: widget.items.isNotEmpty
-          ? IntrinsicHeight(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: List.generate(widget.items.length, (index) {
-                  TabItem item = widget.items[index];
-                  Widget child = Expanded(
+    EdgeInsetsGeometry padTop = widget.isFloating ? EdgeInsets.only(top: sizeHighlight/2) : EdgeInsets.zero;
+
+    return Stack(
+      children: [
+        Positioned.fill(
+          child: Padding(
+            padding: padTop,
+            child: BuildLayout(
+              decoration: BoxDecoration(
+                color: widget.backgroundColor,
+                borderRadius: widget.borderRadius,
+                boxShadow: widget.boxShadow ?? shadow,
+              ),
+            ),
+          ),
+        ),
+        if (widget.items.isNotEmpty)
+          IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: List.generate(widget.items.length, (index) {
+                TabItem item = widget.items[index];
+                String value = widget.items[index].key ?? '';
+                if (visit == index) {
+                  Widget highlightWidget = GestureDetector(
+                    key: Key(value),
+                    onTap: index != widget.indexSelected ? () => widget.onTap?.call(visit) : null,
+                    child: buildHighLight(context, item: item, color: widget.colorSelected, size: sizeHighlight),
+                  );
+                  return !widget.isFloating
+                      ? Container(
+                          padding: pad,
+                          alignment: Alignment.center,
+                          child: highlightWidget
+                        )
+                      : Column(
+                          children: [
+                            highlightWidget
+                          ],
+                        );
+                }
+                return Expanded(
+                  child: Padding(
+                    padding: padTop,
                     child: InkWell(
+                      key: ValueKey(value),
                       onTap: index != widget.indexSelected ? () => widget.onTap?.call(index) : null,
                       child: widget.items.length > index
                           ? buildItem(
-                              context,
-                              item: item,
-                              color: widget.color,
-                              isSelected: index == widget.indexSelected,
-                            )
+                        context,
+                        item: item,
+                        color: widget.color,
+                        isSelected: index == widget.indexSelected,
+                      )
                           : null,
                     ),
-                  );
-                  if (visit == index) {
-                    Widget highlightWidget = GestureDetector(
-                      onTap: index != widget.indexSelected ? () => widget.onTap?.call(visit) : null,
-                      child: buildHighLight(context, item: item, color: widget.colorSelected, size: sizeHighlight),
-                    );
-                    if (!widget.isFloating) {
-                      if (widget.builder != null) {
-                        return Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            widget.builder!(
-                              Padding(
-                                padding: pad,
-                                child: highlightWidget,
-                              ),
-                              index,
-                            ),
-                          ],
-                        );
-                      }
-
-                      return Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Padding(
-                            padding: pad,
-                            child: highlightWidget,
-                          ),
-                        ],
-                      );
-                    } else {
-                      if (widget.builder != null) {
-                        return Stack(
-                          clipBehavior: Clip.none,
-                          children: [
-                            SizedBox(width: sizeHighlight),
-                            widget.builder!(
-                              Positioned(
-                                top: -sizeHighlight / 2,
-                                child: highlightWidget,
-                              ),
-                              index,
-                            ),
-                          ],
-                        );
-                      }
-
-                      return Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          SizedBox(width: sizeHighlight),
-                          Positioned(
-                            top: -sizeHighlight / 2,
-                            child: highlightWidget,
-                          )
-                        ],
-                      );
-                    }
-                  }
-
-                  if (widget.builder != null) {
-                    return widget.builder!(child, index);
-                  }
-
-                  return child;
-                }),
-              ),
-            )
-          : null,
+                  ),
+                );
+              }),
+            ),
+          )
+        else Container(),
+      ],
     );
   }
 
@@ -211,7 +173,7 @@ class _BottomBarCreativeState extends State<BottomBarCreative> {
     return Container(
       padding: paddingVer != null ? EdgeInsets.symmetric(vertical: paddingVer) : padDefault,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           BuildIcon(
@@ -225,7 +187,7 @@ class _BottomBarCreativeState extends State<BottomBarCreative> {
             SizedBox(height: widget.pad),
             Text(
               item.title!,
-              style: Theme.of(context).textTheme.overline?.merge(widget.titleStyle).copyWith(color: itemColor),
+              style: Theme.of(context).textTheme.labelSmall?.merge(widget.titleStyle).copyWith(color: itemColor),
               textAlign: TextAlign.center,
             )
           ],
@@ -262,16 +224,23 @@ class _BottomBarCreativeState extends State<BottomBarCreative> {
       margin: EdgeInsets.zero,
       elevation: widget.highlightStyle?.elevation ?? 0,
       color: background,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(size / 2)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(size / 2),
+      ),
       child: Container(
         height: size,
         width: size,
         alignment: Alignment.center,
-        child: BuildIcon(
-          item: item,
-          iconColor: colorIcon,
-          iconSize: 22,
-          countStyle: countStyle,
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+        ),
+        child: Center(
+          child: BuildIcon(
+            item: item,
+            iconColor: colorIcon,
+            iconSize: 22,
+            countStyle: countStyle,
+          ),
         ),
       ),
     );

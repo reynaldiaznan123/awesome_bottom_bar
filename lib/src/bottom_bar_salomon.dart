@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 import 'package:awesome_bottom_bar/extension/shadow.dart';
 import 'package:awesome_bottom_bar/src/bottom_bar.dart';
@@ -61,6 +63,12 @@ class BottomBarSalomon extends StatefulWidget {
 }
 
 class _BottomBarSalomonState extends State<BottomBarSalomon> with TickerProviderStateMixin {
+  String generateRandomString(int len) {
+    final r = Random();
+    const _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+    return List.generate(len, (index) => _chars[r.nextInt(_chars.length)]).join();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BuildLayout(
@@ -77,7 +85,9 @@ class _BottomBarSalomonState extends State<BottomBarSalomon> with TickerProvider
                 children: List.generate(
                   widget.items.length,
                   (index) {
+                    String value = widget.items[index].key ?? generateRandomString(6);
                     return GestureDetector(
+                      key: Key(value),
                       onTap: index != widget.indexSelected ? () => widget.onTap?.call(index) : null,
                       child: widget.items.length > index
                           ? buildItem(
@@ -168,7 +178,6 @@ class _BottomBarSalomonState extends State<BottomBarSalomon> with TickerProvider
                     iconColor: itemColor,
                     iconSize: widget.iconSize,
                     countStyle: countStyle,
-                    selected: isSelected,
                   ),
                 ),
               ),
@@ -179,7 +188,6 @@ class _BottomBarSalomonState extends State<BottomBarSalomon> with TickerProvider
                 iconColor: itemColor,
                 iconSize: widget.iconSize,
                 countStyle: countStyle,
-                selected: isSelected,
               ),
             ],
             if (item.title is String && item.title != '') ...[
@@ -190,7 +198,8 @@ class _BottomBarSalomonState extends State<BottomBarSalomon> with TickerProvider
                     padding: const EdgeInsetsDirectional.only(start: 8),
                     child: Text(
                       item.title!,
-                      style: Theme.of(context).textTheme.overline?.merge(widget.titleStyle).copyWith(color: itemColor),
+                      style:
+                          Theme.of(context).textTheme.labelSmall?.merge(widget.titleStyle).copyWith(color: itemColor),
                       textAlign: TextAlign.center,
                     ),
                   ),

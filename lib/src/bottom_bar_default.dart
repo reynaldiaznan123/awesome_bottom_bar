@@ -76,8 +76,11 @@ class _BottomBarDefaultState extends State<BottomBarDefault> with TickerProvider
     _animationList = List<Animation<double>>.empty(growable: true);
 
     for (int i = 0; i < widget.items.length; ++i) {
-      _animationControllerList.add(AnimationController(duration: widget.duration ?? const Duration(milliseconds: 400), vsync: this));
-      _animationList.add(Tween(begin: 1.0, end: 1.18).chain(CurveTween(curve: widget.curve ?? Curves.ease)).animate(_animationControllerList[i]));
+      _animationControllerList
+          .add(AnimationController(duration: widget.duration ?? const Duration(milliseconds: 400), vsync: this));
+      _animationList.add(Tween(begin: 1.0, end: 1.18)
+          .chain(CurveTween(curve: widget.curve ?? Curves.ease))
+          .animate(_animationControllerList[i]));
     }
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -119,13 +122,14 @@ class _BottomBarDefaultState extends State<BottomBarDefault> with TickerProvider
     TabItem item,
     Color itemColor,
     EdgeInsets padDefault,
-    bool isSelected,
+    bool selected,
   ) {
     return Container(
       width: double.infinity,
-      padding: widget.paddingVertical != null ? EdgeInsets.symmetric(vertical: widget.paddingVertical ?? 17.0) : padDefault,
+      padding:
+          widget.paddingVertical != null ? EdgeInsets.symmetric(vertical: widget.paddingVertical ?? 17.0) : padDefault,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           BuildIcon(
@@ -133,13 +137,13 @@ class _BottomBarDefaultState extends State<BottomBarDefault> with TickerProvider
             iconColor: itemColor,
             iconSize: widget.iconSize,
             countStyle: widget.countStyle,
-            selected: isSelected,
+            selected: selected,
           ),
           if (item.title is String && item.title != '') ...[
             SizedBox(height: widget.pad),
             Text(
               item.title!,
-              style: Theme.of(context).textTheme.overline?.merge(widget.titleStyle).copyWith(color: itemColor),
+              style: Theme.of(context).textTheme.labelSmall?.merge(widget.titleStyle).copyWith(color: itemColor),
               textAlign: TextAlign.center,
             )
           ],
@@ -155,8 +159,11 @@ class _BottomBarDefaultState extends State<BottomBarDefault> with TickerProvider
       _animationList = List<Animation<double>>.empty(growable: true);
 
       for (int i = 0; i < widget.items.length; ++i) {
-        _animationControllerList.add(AnimationController(duration: widget.duration ?? const Duration(milliseconds: 400), vsync: this));
-        _animationList.add(Tween(begin: 1.0, end: 1.18).chain(CurveTween(curve: widget.curve ?? Curves.ease)).animate(_animationControllerList[i]));
+        _animationControllerList
+            .add(AnimationController(duration: widget.duration ?? const Duration(milliseconds: 400), vsync: this));
+        _animationList.add(Tween(begin: 1.0, end: 1.18)
+            .chain(CurveTween(curve: widget.curve ?? Curves.ease))
+            .animate(_animationControllerList[i]));
       }
     }
 
@@ -182,9 +189,11 @@ class _BottomBarDefaultState extends State<BottomBarDefault> with TickerProvider
           ? IntrinsicHeight(
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: List.generate(widget.items.length, (index) {
+                children: List.generate(widget.items.length, (index) {    
+                  String value = widget.items[index].key ?? '';
                   return Expanded(
                     child: InkWell(
+                      key: Key(value),
                       onTap: index != _selectedIndex!
                           ? () {
                               if (index != _selectedIndex) {

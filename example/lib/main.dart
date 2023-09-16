@@ -39,64 +39,62 @@ List<TabItem> items = [
   TabItem(
     icon: Image.asset(
       'images/home.png',
-      width: 32,
-      height: 32,
+      width: 24.0,
+      height: 24.0,
     ),
     iconActive: Image.asset(
       'images/home_active.png',
-      width: 32,
-      height: 32,
+      width: 24.0,
+      height: 24.0,
     ),
     title: 'Home',
   ),
   TabItem(
     icon: Image.asset(
       'images/masjid.png',
-      width: 32,
-      height: 32,
+      width: 24.0,
+      height: 24.0,
     ),
     iconActive: Image.asset(
       'images/masjid_active.png',
-      width: 32,
-      height: 32,
+      width: 24.0,
+      height: 24.0,
     ),
     title: 'Lokasi Masjid',
   ),
   TabItem(
-    icon: SizedBox(
-      height: 32.0,
-      width: 32.0,
-      child: Image.asset(
-        'images/donasi.png',
-        width: 80.0,
-        height: 8.0,
-      ),
+    icon: Image.asset(
+      'images/donasi.png',
+      width: 86.0,
+      height: 86.0,
+      fit: BoxFit.cover,
     ),
+    // icon: Icons.abc_rounded,
     title: 'Donasi',
   ),
   TabItem(
     icon: Image.asset(
       'images/sholat.png',
-      width: 32,
-      height: 32,
+      width: 24.0,
+      height: 24.0,
     ),
     iconActive: Image.asset(
       'images/sholat_active.png',
-      width: 32,
-      height: 32,
+      width: 24.0,
+      height: 24.0,
     ),
     title: 'Sholat',
   ),
   TabItem(
     icon: Image.asset(
       'images/lainnya.png',
-      width: 32,
-      height: 32,
+      width: 24.0,
+      height: 24.0,
     ),
     iconActive: Image.asset(
       'images/lainnya_active.png',
-      width: 32,
-      height: 32,
+      width: 24.0,
+      height: 24.0,
     ),
     title: 'Lainnya',
   ),
@@ -576,6 +574,9 @@ class _MyHomePageState extends State<MyHomePage> {
               colorSelected: colorSelect,
               indexSelected: visit,
               isFloating: true,
+              highlightStyle: const HighlightStyle(
+                // background: Colors.transparent,
+              ),
               onTap: (int index) => setState(() {
                 visit = index;
               }),
@@ -588,7 +589,8 @@ class _MyHomePageState extends State<MyHomePage> {
               colorSelected: colorSelect,
               indexSelected: visit,
               isFloating: true,
-              highlightStyle: const HighlightStyle(sizeLarge: true, background: Colors.red, elevation: 3),
+              highlightStyle: const HighlightStyle(
+                sizeLarge: true, background: Colors.red, elevation: 3),
               onTap: (int index) => setState(() {
                 visit = index;
               }),
@@ -708,20 +710,20 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-        padding: const EdgeInsets.only(bottom: 30, right: 32, left: 32),
-        child: BottomBarFloating(
-          items: items,
-          backgroundColor: Colors.green,
-          color: Colors.white,
-          colorSelected: Colors.orange,
-          indexSelected: visit,
-          paddingVertical: 24,
-          onTap: (int index) => setState(() {
-            visit = index;
-          }),
-        ),
-      ),
+      // bottomNavigationBar: Container(
+      //   padding: const EdgeInsets.only(bottom: 30, right: 32, left: 32),
+      //   child: BottomBarFloating(
+      //     items: items,
+      //     backgroundColor: Colors.green,
+      //     color: Colors.white,
+      //     colorSelected: Colors.orange,
+      //     indexSelected: visit,
+      //     paddingVertical: 24,
+      //     onTap: (int index) => setState(() {
+      //       visit = index;
+      //     }),
+      //   ),
+      // ),
     );
   }
 }

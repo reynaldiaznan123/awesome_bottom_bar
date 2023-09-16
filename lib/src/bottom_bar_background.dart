@@ -76,8 +76,11 @@ class _BottomBarBackgroundState extends State<BottomBarBackground> with TickerPr
     _animationList = List<Animation<Color?>>.empty(growable: true);
 
     for (int i = 0; i < widget.items.length; ++i) {
-      _animationControllerList.add(AnimationController(duration: widget.duration ?? const Duration(milliseconds: 400), vsync: this));
-      _animationList.add(ColorTween(begin: widget.color, end: widget.colorSelected).chain(CurveTween(curve: widget.curve ?? Curves.ease)).animate(_animationControllerList[i]));
+      _animationControllerList
+          .add(AnimationController(duration: widget.duration ?? const Duration(milliseconds: 400), vsync: this));
+      _animationList.add(ColorTween(begin: widget.color, end: widget.colorSelected)
+          .chain(CurveTween(curve: widget.curve ?? Curves.ease))
+          .animate(_animationControllerList[i]));
     }
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -130,7 +133,7 @@ class _BottomBarBackgroundState extends State<BottomBarBackground> with TickerPr
             SizedBox(height: widget.pad),
             Text(
               item.title!,
-              style: Theme.of(context).textTheme.overline?.merge(widget.titleStyle).copyWith(color: color),
+              style: Theme.of(context).textTheme.labelSmall?.merge(widget.titleStyle).copyWith(color: color),
               textAlign: TextAlign.center,
             )
           ],
@@ -164,8 +167,11 @@ class _BottomBarBackgroundState extends State<BottomBarBackground> with TickerPr
       _animationList = List<Animation<Color?>>.empty(growable: true);
 
       for (int i = 0; i < widget.items.length; ++i) {
-        _animationControllerList.add(AnimationController(duration: widget.duration ?? const Duration(milliseconds: 400), vsync: this));
-        _animationList.add(ColorTween(begin: widget.color, end: widget.colorSelected).chain(CurveTween(curve: widget.curve ?? Curves.ease)).animate(_animationControllerList[i]));
+        _animationControllerList
+            .add(AnimationController(duration: widget.duration ?? const Duration(milliseconds: 400), vsync: this));
+        _animationList.add(ColorTween(begin: widget.color, end: widget.colorSelected)
+            .chain(CurveTween(curve: widget.curve ?? Curves.ease))
+            .animate(_animationControllerList[i]));
       }
     }
 
@@ -224,8 +230,10 @@ class _BottomBarBackgroundState extends State<BottomBarBackground> with TickerPr
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: List.generate(widget.items.length, (index) {
+                        String value = widget.items[index].key ?? '';
                         return Expanded(
                           child: InkWell(
+                            key: Key(value),
                             onTap: index != _selectedIndex
                                 ? () {
                                     if (index != _selectedIndex) {
