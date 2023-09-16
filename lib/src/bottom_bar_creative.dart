@@ -88,6 +88,7 @@ class _BottomBarCreativeState extends State<BottomBarCreative> {
     EdgeInsetsGeometry padTop = widget.isFloating ? EdgeInsets.only(top: sizeHighlight/2) : EdgeInsets.zero;
 
     return Stack(
+      clipBehavior: Clip.none,
       children: [
         Positioned.fill(
           child: Padding(

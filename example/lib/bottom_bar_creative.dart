@@ -23,6 +23,8 @@ class _CreativeState extends State<Creative> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.red,
+      extendBody: true,
       bottomNavigationBar: BottomBarCreative(
         items: widget.items,
         backgroundColor: Colors.green.withOpacity(0.21),

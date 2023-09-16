@@ -142,6 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
+      backgroundColor: Colors.red,
       drawer: Drawer(
           child: ListView(
         padding: const EdgeInsets.only(left: 16),
@@ -575,7 +576,7 @@ class _MyHomePageState extends State<MyHomePage> {
               indexSelected: visit,
               isFloating: true,
               highlightStyle: const HighlightStyle(
-                // background: Colors.transparent,
+                background: Colors.transparent,
               ),
               onTap: (int index) => setState(() {
                 visit = index;
@@ -724,6 +725,20 @@ class _MyHomePageState extends State<MyHomePage> {
       //     }),
       //   ),
       // ),
+      bottomNavigationBar: BottomBarCreative(
+          items: items,
+          backgroundColor: Colors.green.withOpacity(0.21),
+          color: color,
+          colorSelected: colorSelect,
+          indexSelected: visit,
+          isFloating: true,
+          highlightStyle: const HighlightStyle(
+            background: Colors.transparent,
+          ),
+          onTap: (int index) => setState(() {
+            visit = index;
+          }),
+        ),
     );
   }
 }
